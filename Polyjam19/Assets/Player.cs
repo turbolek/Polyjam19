@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public float leftBorder;
     public float rightBorder;
-    bool canEnterRoom = false;
+    Door activeDoor;
 
     public float speed = 2f;
 
@@ -26,9 +26,10 @@ public class Player : MonoBehaviour
             directionValue = 1f;
         }
 
-        if (Input.GetKey(KeyCode.UpArrow) && canEnterRoom)
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            EnterRoom();
+            if (activeDoor != null)
+                EnterApartment(activeDoor.apartment);
         }
 
         Move(distance * directionValue);
@@ -44,11 +45,24 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("trigger entered");
-        canEnterRoom = true;
+        Door door = collider.GetComponent<Door>();
+        if (door != null)
+            activeDoor = door;
     }
 
-    void EnterRoom()
+    void OnTriggerExit2D(Collider2D collider)
     {
+        Debug.Log("trigger exit");
+        Door door = collider.GetComponent<Door>();
+        if (door != null)
+            activeDoor = null;
+    }
+
+    void EnterApartment(Apartment apartment)
+    {
+
         transform.localScale = new Vector3(0.75f, 0.75f, 1f);
+        leftBorder = apartment.leftBorder;
+        rightBorder = apartment.rightBorder;
     }
 }

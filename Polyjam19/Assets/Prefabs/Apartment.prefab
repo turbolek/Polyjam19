@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 120004828}
   - component: {fileID: 120004830}
   - component: {fileID: 120004829}
+  - component: {fileID: 120004831}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -106,6 +107,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.33}
   m_EdgeRadius: 0
+--- !u!114 &120004831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120004827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598519968eb563d43a8d0b6342b90221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftBorder: 0
+  rightBorder: 0
+  apartment: {fileID: 3113910790967849825}
 --- !u!1 &7968047139345444901
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7968047139345444899}
   - component: {fileID: 7968047139345444900}
+  - component: {fileID: 3113910790967849825}
   m_Layer: 0
   m_Name: Apartment
   m_TagString: Untagged
@@ -186,3 +203,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3113910790967849825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968047139345444901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a1ee97b6fe7cc448ceb3a9fdbf30ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftBorder: -1.25
+  rightBorder: 1.25

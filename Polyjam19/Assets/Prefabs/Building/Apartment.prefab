@@ -303,7 +303,7 @@ MonoBehaviour:
   disasterPrefab: {fileID: 8662073039486370048, guid: 0b9a08a8863a4cf4d86212fce4f897b3,
     type: 3}
   apartment: {fileID: 0}
-  disasterChancePerSecond: 0
+  disasterChancePerSecond: 0.01
   signalingTime: 10
   signaling: 0
   signalingSprite: {fileID: 21300000, guid: 45d1de73a0465234a871fc75146d88e7, type: 3}
@@ -429,7 +429,7 @@ MonoBehaviour:
   disasterPrefab: {fileID: 8662073039486370048, guid: fb3a6cfb01ddf88458835c96f6041cc3,
     type: 3}
   apartment: {fileID: 0}
-  disasterChancePerSecond: 0
+  disasterChancePerSecond: 0.01
   signalingTime: 10
   signaling: 0
   signalingSprite: {fileID: 21300000, guid: 73016605351fc9a4092527e03f3e7afe, type: 3}
@@ -634,7 +634,7 @@ MonoBehaviour:
   disasterPrefab: {fileID: 8662073039486370048, guid: 8269c335714123e4798a2fd4e2cb3551,
     type: 3}
   apartment: {fileID: 0}
-  disasterChancePerSecond: 0
+  disasterChancePerSecond: 0.01
   signalingTime: 10
   signaling: 0
   signalingSprite: {fileID: 21300000, guid: da8548bdab0a1c246a03386aac65633b, type: 3}

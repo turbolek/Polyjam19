@@ -28,8 +28,15 @@ public class DisasterSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!signaling && (apartment.waterSpawner.signaling || apartment.ratSpawner.signaling || apartment.fireSpawner.signaling))
+        {
+            Reset();
+            return;
+        }
+
         if (disaster != null || signaling)
             return;
+
 
         if (timer > 1f)
         {

@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
     public Item currentItem;
     [HideInInspector]
     public Apartment currentApartment;
+
+    Disaster activeDisaster;
     Item activeItem;
+
     [HideInInspector]
     public InsideScaler insideScaler;
     BaseDoor activeDoor;
@@ -45,10 +48,10 @@ public class Player : MonoBehaviour
             {
                 activeDoor.Enter(this);
             }
-            else if (activeItem != null)
-            {
+            else if (activeItem != null && currentItem == null)
                 PickUpItem(activeItem);
-            }
+            else if (activeDisaster != null)
+                activeDisaster.Interact(currentItem);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -82,6 +85,10 @@ public class Player : MonoBehaviour
         Item item = collider.GetComponent<Item>();
         if (item != null)
             activeItem = item;
+
+        Disaster disaster = collider.GetComponent<Disaster>();
+        if (disaster != null)
+            activeDisaster = disaster;
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -95,8 +102,21 @@ public class Player : MonoBehaviour
         {
             activeItem = null;
         }
+
+        Disaster disaster = collider.GetComponent<Disaster>();
+        if (disaster != null)
+            activeDisaster = null;
     }
-    
+
+    void EnterApartment(Apartment apartment)
+    {
+        currentApartment = apartment;
+        insideScaler.ScaleToApartment(apartment);
+        leftBorder = apartment.leftBorder;
+        rightBorder = apartment.rightBorder;
+        transform.position = new Vector3(transform.position.x, apartment.floorTransform.position.y, apartment.floorTransform.position.z);
+    }
+
     void PickUpItem(Item item)
     {
         currentItem = item;
@@ -108,7 +128,7 @@ public class Player : MonoBehaviour
     {
         currentItem = null;
         item.transform.parent = null;
-        item.transform.position = new Vector3(item.transform.position.x, transform.position.y, item.transform.position.z);
+        item.transform.position = new Vector3(item.transform.position.x, currentApartment.floorTransform.position.y, currentApartment.floorTransform.position.z);
         item.currentApartment = currentApartment;
         item.insideScaler.ScaleToApartment(currentApartment);
     }

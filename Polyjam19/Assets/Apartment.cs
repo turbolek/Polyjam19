@@ -10,6 +10,8 @@ public class Apartment : MonoBehaviour
     public Transform floorTransform;
     public DisasterSpawner[] disasterSpawners;
 
+    [SerializeField]
+
     void Start()
     {
         for (int i =0; i < disasterSpawners.Length; i++)
@@ -26,4 +28,6 @@ public class Apartment : MonoBehaviour
         player.rightBorder = rightBorder;
         player.transform.position = new Vector3(transform.position.x, floorTransform.position.y, transform.position.z);
     }
+
+
 }

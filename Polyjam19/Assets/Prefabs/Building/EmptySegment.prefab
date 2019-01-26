@@ -97,6 +97,7 @@ MonoBehaviour:
   rightBorder: 1.25
   insideScale: 1
   floorTransform: {fileID: 5663685080605601199}
+  disasterSpawners: []
 --- !u!1 &2878290547737161248
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flatRenderer: {fileID: 4509414141528999312}
   corridorRenderer: {fileID: 5772285155999207260}
+  apartmentRoom: {fileID: 0}
+  apartmentCorridor: {fileID: 1383789959470598166}
 --- !u!1 &4389873723137560016
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     public Apartment currentApartment;
 
     Disaster activeDisaster;
-    Item activeItem;
+    List<Item> activeItems = new List<Item>();
 
     [HideInInspector]
     public InsideScaler insideScaler;
@@ -44,14 +44,14 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            if (activeDoor != null)
+            if (activeDisaster != null && activeDisaster.apartment == currentApartment)
+                activeDisaster.Interact(currentItem);
+            else if (activeDoor != null)
             {
                 activeDoor.Enter(this);
             }
-            else if (activeItem != null && currentItem == null)
-                PickUpItem(activeItem);
-            else if (activeDisaster != null)
-                activeDisaster.Interact(currentItem);
+            else if (activeItems.Count > 0 && currentItem == null)
+                PickUpItem(activeItems[0]);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -83,8 +83,8 @@ public class Player : MonoBehaviour
             activeDoor = door;
 
         Item item = collider.GetComponent<Item>();
-        if (item != null)
-            activeItem = item;
+        if (item != null && !activeItems.Contains(item))
+            activeItems.Add(item);
 
         Disaster disaster = collider.GetComponent<Disaster>();
         if (disaster != null)
@@ -98,9 +98,9 @@ public class Player : MonoBehaviour
             activeDoor = null;
 
         Item item = collider.GetComponent<Item>();
-        if (item != null)
+        if (activeItems.Contains(item))
         {
-            activeItem = null;
+            activeItems.Remove(item);
         }
 
         Disaster disaster = collider.GetComponent<Disaster>();

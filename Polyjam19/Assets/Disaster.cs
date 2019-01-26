@@ -5,7 +5,6 @@ using UnityEngine;
 public class Disaster : MonoBehaviour
 {
     public Item.Type requiredItemType;
-    [HideInInspector]
     public Apartment apartment;
 
 

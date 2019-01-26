@@ -112,6 +112,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &113965099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3113910790967849825, guid: 53a95e070f8851b4083583154609a45d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7968047139097056903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a1ee97b6fe7cc448ceb3a9fdbf30ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &292211238
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,10 +151,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292211238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.0468192, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0.9531808, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 711512632}
+  m_Father: {fileID: 353280542}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &292211240
@@ -232,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredItemType: 1
-  apartment: {fileID: 0}
+  apartment: {fileID: 113965099}
 --- !u!1 &334527748
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +342,12 @@ MonoBehaviour:
   rightBorder: 7.5
   insideScale: 1
   floorTransform: {fileID: 803648569}
+--- !u!4 &353280542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1195844940, guid: 53a95e070f8851b4083583154609a45d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7968047139097056903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &491850860
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658974289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.58, y: -1, z: -1.1}
+  m_LocalPosition: {x: 5.207, y: -1, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -772,7 +790,7 @@ PrefabInstance:
     - target: {fileID: 7968047139345444901, guid: 53a95e070f8851b4083583154609a45d,
         type: 3}
       propertyPath: m_Name
-      value: Apartment
+      value: Apartment 2
       objectReference: {fileID: 0}
     - target: {fileID: 7968047139345444899, guid: 53a95e070f8851b4083583154609a45d,
         type: 3}
@@ -845,12 +863,6 @@ PrefabInstance:
       objectReference: {fileID: 334527751}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a95e070f8851b4083583154609a45d, type: 3}
---- !u!4 &711512632 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1195844940, guid: 53a95e070f8851b4083583154609a45d,
-    type: 3}
-  m_PrefabInstance: {fileID: 711512631}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &803648568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1064,7 @@ PrefabInstance:
     - target: {fileID: 7968047139345444901, guid: 53a95e070f8851b4083583154609a45d,
         type: 3}
       propertyPath: m_Name
-      value: Apartment
+      value: Apartment 1
       objectReference: {fileID: 0}
     - target: {fileID: 7968047139345444899, guid: 53a95e070f8851b4083583154609a45d,
         type: 3}

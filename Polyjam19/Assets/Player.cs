@@ -31,20 +31,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        float deltaTime = Time.deltaTime;
-        float distance = speed * deltaTime;
-        float directionValue = 0f;
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            directionValue = -1f;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            directionValue = 1f;
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (activeDisaster != null && activeDisaster.apartment == currentApartment)
             {
@@ -74,16 +61,32 @@ public class Player : MonoBehaviour
                 return;
             }
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (activeDoor != null && currentApartment != null)
             {
                 activeDoor.Exit(this);
+                return;
             }
-            else if (currentItem != null)
+
+            if (currentItem != null)
             {
                 DropItem(currentItem);
+                return;
             }
+        }
+
+        float deltaTime = Time.deltaTime;
+        float distance = speed * deltaTime;
+        float directionValue = 0f;
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            directionValue = -1f;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            directionValue = 1f;
         }
 
         Move(distance * directionValue);

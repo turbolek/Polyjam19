@@ -18,7 +18,8 @@ public class Item : MonoBehaviour
     public enum Type
     {
         FireDistinguisher = 1,
-        Wrench = 2
+        Wrench = 2,
+        RatTrap = 3
     }
 
 

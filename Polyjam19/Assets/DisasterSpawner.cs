@@ -51,7 +51,7 @@ public class DisasterSpawner : MonoBehaviour
     {
         GameObject disasterGO = Instantiate(disasterPrefab);
         disaster = disasterGO.GetComponent<Disaster>();
-        disasterGO.transform.position = transform.position;
+        disasterGO.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f);
         disaster.apartment = apartment;
         disaster.SetSpawner(this);
     }

@@ -7,12 +7,21 @@ public class Player : MonoBehaviour
     public float leftBorder;
     public float rightBorder;
     public GameObject itemSlot;
+    [HideInInspector]
     public Item currentItem;
+    [HideInInspector]
+    public Apartment currentApartment;
     Door activeDoor;
     Item activeItem;
+    [HideInInspector]
+    public InsideScaler insideScaler;
 
     public float speed = 2f;
 
+    void Start()
+    {
+        insideScaler = GetComponent<InsideScaler>();
+    }
 
     void Update()
     {
@@ -38,8 +47,11 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            if (activeDoor != null)
-                ExitApartment();
+            if (activeDoor != null && currentApartment != null)
+                ExitApartment(activeDoor);
+            else if (currentItem != null)
+                DropItem(currentItem);
+
         }
 
         Move(distance * directionValue);
@@ -76,16 +88,16 @@ public class Player : MonoBehaviour
 
     void EnterApartment(Apartment apartment)
     {
-        transform.localScale = new Vector3(0.75f, 0.75f, 1f);
+        currentApartment = apartment;
+        insideScaler.ScaleToApartment(apartment);
         leftBorder = apartment.leftBorder;
         rightBorder = apartment.rightBorder;
+        transform.position = new Vector3(transform.position.x, apartment.floorTransform.position.y, transform.position.z);
     }
 
-    void ExitApartment()
+    void ExitApartment(Door door)
     {
-        transform.localScale = new Vector3(1f, 1f, 1f);
-        leftBorder = -1.5f;
-        rightBorder = 7.5f;
+        EnterApartment(door.corridor);
     }
 
     void PickUpItem(Item item)
@@ -93,5 +105,14 @@ public class Player : MonoBehaviour
         currentItem = item;
         item.transform.parent = itemSlot.transform;
         item.transform.position = itemSlot.transform.position;
+    }
+
+    void DropItem(Item item)
+    {
+        currentItem = null;
+        item.transform.parent = null;
+        item.transform.position = new Vector3(item.transform.position.x, transform.position.y, item.transform.position.z);
+        item.currentApartment = currentApartment;
+        item.insideScaler.ScaleToApartment(currentApartment);
     }
 }

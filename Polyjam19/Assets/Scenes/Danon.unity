@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 334527750}
   - component: {fileID: 334527749}
+  - component: {fileID: 334527751}
   m_Layer: 0
   m_Name: corridor
   m_TagString: Untagged
@@ -187,10 +188,27 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: -1.15, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 803648569}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &334527751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334527748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a1ee97b6fe7cc448ceb3a9fdbf30ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftBorder: -1.5
+  rightBorder: 7.5
+  insideScale: 1
+  floorTransform: {fileID: 803648569}
 --- !u!1 &491850860
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +221,7 @@ GameObject:
   - component: {fileID: 491850863}
   - component: {fileID: 491850862}
   - component: {fileID: 491850861}
+  - component: {fileID: 491850865}
   m_Layer: 0
   m_Name: fireDistinguisher
   m_TagString: Untagged
@@ -223,10 +242,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
@@ -249,6 +268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  currentApartment: {fileID: 0}
+  insideScaler: {fileID: 0}
 --- !u!212 &491850863
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -305,12 +326,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491850860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.38, y: -0.58251804, z: 0}
+  m_LocalPosition: {x: 6.38, y: -1, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &491850865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491850860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebef79d0a2f1e554eb891f92d4cd71a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &697625174
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,6 +357,7 @@ GameObject:
   - component: {fileID: 697625175}
   - component: {fileID: 697625179}
   - component: {fileID: 697625178}
+  - component: {fileID: 697625180}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -347,6 +381,8 @@ MonoBehaviour:
   rightBorder: 7.5
   itemSlot: {fileID: 1901999124}
   currentItem: {fileID: 0}
+  currentApartment: {fileID: 0}
+  insideScaler: {fileID: 0}
   speed: 2
 --- !u!212 &697625176
 SpriteRenderer:
@@ -404,7 +440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697625174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06695938, y: -0.35088456, z: -1}
+  m_LocalPosition: {x: 0, y: -1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1901999125}
@@ -445,10 +481,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -458,6 +494,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &697625180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697625174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebef79d0a2f1e554eb891f92d4cd71a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &711512631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,8 +583,42 @@ PrefabInstance:
       propertyPath: rightBorder
       value: 4.25
       objectReference: {fileID: 0}
+    - target: {fileID: 120004831, guid: 53a95e070f8851b4083583154609a45d, type: 3}
+      propertyPath: corridor
+      value: 
+      objectReference: {fileID: 334527751}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a95e070f8851b4083583154609a45d, type: 3}
+--- !u!1 &803648568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 803648569}
+  m_Layer: 0
+  m_Name: Floor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &803648569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803648568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 334527750}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1340883350
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901999124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29, y: -0.12, z: 0}
+  m_LocalPosition: {x: 0.25, y: 0.25, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 697625177}
@@ -765,5 +847,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 120004831, guid: 53a95e070f8851b4083583154609a45d, type: 3}
+      propertyPath: corridor
+      value: 
+      objectReference: {fileID: 334527751}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a95e070f8851b4083583154609a45d, type: 3}

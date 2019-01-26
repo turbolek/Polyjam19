@@ -6,4 +6,6 @@ public class Apartment : MonoBehaviour
 {
     public float leftBorder;
     public float rightBorder;
+    public float insideScale = .75f;
+    public Transform floorTransform;
 }

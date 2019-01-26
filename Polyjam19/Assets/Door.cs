@@ -6,4 +6,5 @@ public class Door : MonoBehaviour
 {
 
     public Apartment apartment;
+    public Apartment corridor;
 }

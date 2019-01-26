@@ -15,10 +15,36 @@ public class BuildingGenerator : MonoBehaviour
     private Transform buildingParent = null;
 
     private List<List<BuildingSegment>> building = null;
+    GameManager gameManager;
 
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         GenerateBuilding();
+        SpawnPlayer();
+        SpawnItems();
+
+    }
+
+    void SpawnPlayer()
+    {
+        GameObject playerGO = Instantiate(gameManager.playerPrefab);
+        Player player = playerGO.GetComponent<Player>();
+        player.Init();
+        BuildingSegment buildingSegment = building[0][0];
+        buildingSegment.apartmentCorridor.Enter(player);
+
+    }
+
+    void SpawnItems()
+    {
+        for (int i = 0; i < gameManager.itemPrefabs.Length; i++)
+        {
+            GameObject itemGO = Instantiate(gameManager.itemPrefabs[i]);
+            BuildingSegment buildingSegment = building[0][0];
+            itemGO.transform.position = buildingSegment.apartmentCorridor.floorTransform.position;
+            itemGO.transform.Translate(new Vector3((float)2* i, 0f, 0f));
+        }
     }
 
     private void GenerateBuilding()
@@ -54,7 +80,7 @@ public class BuildingGenerator : MonoBehaviour
 
             BuildingSegment segment = Instantiate(floor.GetSegmentPrefab(segmentType), buildingParent);
             segment.transform.localPosition = new Vector3(floorWidth + segment.SegmentWidth / 2, ((float)level + .5f) * segment.SegmentHeight);
-            segment.SetApartmentRoomBounds(segment.transform.position.x - segment.SegmentWidth / 2, segment.transform.position.x + segment.SegmentWidth /2);
+            segment.SetApartmentRoomBounds(segment.transform.position.x - segment.SegmentWidth / 2, segment.transform.position.x + segment.SegmentWidth / 2);
             newFloor.Add(segment);
             floorWidth += segment.SegmentWidth;
         }

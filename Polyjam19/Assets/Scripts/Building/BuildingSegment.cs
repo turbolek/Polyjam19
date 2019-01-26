@@ -13,8 +13,7 @@ public class BuildingSegment : MonoBehaviour
 
     [SerializeField]
     private Apartment apartmentRoom = null;
-    [SerializeField]
-    private Apartment apartmentCorridor = null;
+    public Apartment apartmentCorridor = null;
 
     public float SegmentWidth
     {

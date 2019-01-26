@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     public float speed = 2f;
 
-    void Start()
+    public void Init()
     {
         insideScaler = GetComponent<InsideScaler>();
     }

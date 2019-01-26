@@ -13,17 +13,24 @@ public class StaircaseDoor : BaseDoor
     private StaircaseDoor relatedStairs = null;
 
     [SerializeField]
-    private Transform spawnPoint = null;
+    private Apartment corridor = null;
 
     public override void Enter(Player player)
     {
-        //tu może animacja a potem akcja
+        if (relatedStairs == null)
+        {
+            return;
+        }
         relatedStairs.Exit(player);
     }
 
     public override void Exit(Player player)
     {
-        player.transform.position = spawnPoint.transform.position;
-        //skala itp
+        corridor.Enter(player);
+    }
+
+    public void SetRelatedDoor(StaircaseDoor door)
+    {
+        relatedStairs = door;
     }
 }

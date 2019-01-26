@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
         BaseDoor door = collider.GetComponent<BaseDoor>();
-        if (door != null)
+        if (door != null && door == activeDoor)
             activeDoor = null;
 
         Item item = collider.GetComponent<Item>();

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -11,10 +12,10 @@ public class Player : MonoBehaviour
     public Item currentItem;
     [HideInInspector]
     public Apartment currentApartment;
-    Door activeDoor;
     Item activeItem;
     [HideInInspector]
     public InsideScaler insideScaler;
+    BaseDoor activeDoor;
 
     public float speed = 2f;
 
@@ -41,17 +42,24 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             if (activeDoor != null)
-                EnterApartment(activeDoor.apartment);
+            {
+                activeDoor.Enter(this);
+            }
             else if (activeItem != null)
+            {
                 PickUpItem(activeItem);
+            }
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             if (activeDoor != null && currentApartment != null)
-                ExitApartment(activeDoor);
+            {
+                activeDoor.Exit(this);
+            }
             else if (currentItem != null)
+            {
                 DropItem(currentItem);
-
+            }
         }
 
         Move(distance * directionValue);
@@ -66,7 +74,8 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Door door = collider.GetComponent<Door>();
+        Debug.Log("trigger entered");
+        BaseDoor door = collider.GetComponent<BaseDoor>();
         if (door != null)
             activeDoor = door;
 
@@ -77,29 +86,17 @@ public class Player : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        Door door = collider.GetComponent<Door>();
+        BaseDoor door = collider.GetComponent<BaseDoor>();
         if (door != null)
             activeDoor = null;
 
         Item item = collider.GetComponent<Item>();
-        if (door != null)
+        if (item != null)
+        {
             activeItem = null;
+        }
     }
-
-    void EnterApartment(Apartment apartment)
-    {
-        currentApartment = apartment;
-        insideScaler.ScaleToApartment(apartment);
-        leftBorder = apartment.leftBorder;
-        rightBorder = apartment.rightBorder;
-        transform.position = new Vector3(transform.position.x, apartment.floorTransform.position.y, transform.position.z);
-    }
-
-    void ExitApartment(Door door)
-    {
-        EnterApartment(door.corridor);
-    }
-
+    
     void PickUpItem(Item item)
     {
         currentItem = item;

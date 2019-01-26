@@ -31,6 +31,10 @@ public class Player : MonoBehaviour
             if (activeDoor != null)
                 EnterApartment(activeDoor.apartment);
         }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            ExitApartment();
+        }
 
         Move(distance * directionValue);
     }
@@ -60,9 +64,15 @@ public class Player : MonoBehaviour
 
     void EnterApartment(Apartment apartment)
     {
-
         transform.localScale = new Vector3(0.75f, 0.75f, 1f);
         leftBorder = apartment.leftBorder;
         rightBorder = apartment.rightBorder;
+    }
+
+    void ExitApartment()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
+        leftBorder = -1.5f;
+        rightBorder = 4.5f;
     }
 }

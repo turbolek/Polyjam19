@@ -11,8 +11,11 @@ public class Player : MonoBehaviour
     public Item currentItem;
     [HideInInspector]
     public Apartment currentApartment;
+
+    Disaster activeDisaster;
     Door activeDoor;
     Item activeItem;
+
     [HideInInspector]
     public InsideScaler insideScaler;
 
@@ -42,8 +45,10 @@ public class Player : MonoBehaviour
         {
             if (activeDoor != null)
                 EnterApartment(activeDoor.apartment);
-            else if (activeItem != null)
+            else if (activeItem != null && currentItem == null)
                 PickUpItem(activeItem);
+            else if (activeDisaster != null)
+                activeDisaster.Interact(currentItem);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -73,6 +78,10 @@ public class Player : MonoBehaviour
         Item item = collider.GetComponent<Item>();
         if (item != null)
             activeItem = item;
+
+        Disaster disaster = collider.GetComponent<Disaster>();
+        if (disaster != null)
+            activeDisaster = disaster;
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -84,6 +93,10 @@ public class Player : MonoBehaviour
         Item item = collider.GetComponent<Item>();
         if (door != null)
             activeItem = null;
+
+        Disaster disaster = collider.GetComponent<Disaster>();
+        if (disaster != null)
+            activeDisaster = null;
     }
 
     void EnterApartment(Apartment apartment)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FloorData0
   m_EditorClassIdentifier: 
   segments: 0100000001000000020000000300000001000000
-  apartmentSegment: {fileID: 5714466581761596980, guid: db5aac55a61687e40a019f24feca21a6,
+  apartmentSegment: {fileID: 5714466581761596980, guid: f9e014e6a4821a142b83dca3b978042b,
     type: 3}
   stairsUpSegment: {fileID: 5205551437894324062, guid: e2360ad1ba2377e48a95caa90fb57d61,
     type: 3}

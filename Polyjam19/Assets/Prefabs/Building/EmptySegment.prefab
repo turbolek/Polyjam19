@@ -145,7 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomRenderer: {fileID: 4509414141528999312}
   corridorRenderer: {fileID: 5772285155999207260}
-  apartmentRoom: {fileID: 0}
+  hallCorridorRenderer: {fileID: 0}
+  apartmentRoom: {fileID: 1383789959470598166}
   apartmentCorridor: {fileID: 1383789959470598166}
 --- !u!1 &4389873723137560016
 GameObject:

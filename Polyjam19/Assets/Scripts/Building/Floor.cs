@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,10 +13,31 @@ public class Floor : ScriptableObject
     }
 
     [SerializeField]
-    private BuildingSegment apartmentSegment = null;
-    public BuildingSegment ApartmentSegment
+    private BuildingSegment apartmentSalonSegment = null;
+    public BuildingSegment ApartmentSalonSegment
     {
-        get { return apartmentSegment; }
+        get { return apartmentSalonSegment; }
+    }
+
+    [SerializeField]
+    private BuildingSegment apartmentKitchenSegment = null;
+    public BuildingSegment ApartmentKitchenSegment
+    {
+        get { return apartmentKitchenSegment; }
+    }
+
+    [SerializeField]
+    private BuildingSegment apartmentBathroomSegment = null;
+    public BuildingSegment ApartmentBathroomSegment
+    {
+        get { return apartmentBathroomSegment; }
+    }
+
+    [SerializeField]
+    private BuildingSegment caretakerRoomSegment = null;
+    public BuildingSegment CaretakerRoomSegment
+    {
+        get { return caretakerRoomSegment; }
     }
 
     [SerializeField]
@@ -47,11 +68,48 @@ public class Floor : ScriptableObject
             case FloorSegmentType.empty:
                 return EmptySegment;
             case FloorSegmentType.apartment:
-                return apartmentSegment;
+                return GetRandomApartment();
             case FloorSegmentType.stairsUp:
                 return stairsUpSegment;
             case FloorSegmentType.stairsDown:
                 return stairsDownSegment;
+            case FloorSegmentType.caretakerRoom:
+                return caretakerRoomSegment;
+            default:
+                return null;
+        }
+    }
+
+    List<ApartmentType> availableApartments = new List<ApartmentType>();
+
+    private void RefreshAvailableApartments()
+    {
+        int typesCount = Enum.GetNames(typeof(ApartmentType)).Length;
+        for (int i = 0; i < typesCount; ++i)
+        {
+            availableApartments.Add((ApartmentType)(i));
+        }
+    }
+    
+    private BuildingSegment GetRandomApartment()
+    {
+        if (availableApartments.Count == 0)
+        {
+            RefreshAvailableApartments();
+        }
+
+        int randomId = UnityEngine.Random.Range(0, availableApartments.Count);
+        ApartmentType type = availableApartments[randomId];
+        availableApartments.RemoveAt(randomId);
+
+        switch (type)
+        {
+            case ApartmentType.salon:
+                return ApartmentSalonSegment;
+            case ApartmentType.kitchen:
+                return ApartmentKitchenSegment;
+            case ApartmentType.bathroom:
+                return ApartmentBathroomSegment;
             default:
                 return null;
         }
@@ -67,6 +125,14 @@ public enum FloorSegmentType
     apartment = 1,
     stairsUp = 2,
     stairsDown = 3,
+    caretakerRoom = 4,
+}
+
+public enum ApartmentType
+{
+    salon = 0,
+    kitchen = 1,
+    bathroom =2,
 }
 
 

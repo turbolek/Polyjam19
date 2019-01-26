@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         insideScaler.ScaleToApartment(apartment);
         leftBorder = apartment.leftBorder;
         rightBorder = apartment.rightBorder;
-        transform.position = new Vector3(transform.position.x, apartment.floorTransform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x, apartment.floorTransform.position.y, apartment.floorTransform.position.z);
     }
 
     void ExitApartment(Door door)
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
     {
         currentItem = null;
         item.transform.parent = null;
-        item.transform.position = new Vector3(item.transform.position.x, transform.position.y, item.transform.position.z);
+        item.transform.position = new Vector3(item.transform.position.x, currentApartment.floorTransform.position.y, currentApartment.floorTransform.position.z);
         item.currentApartment = currentApartment;
         item.insideScaler.ScaleToApartment(currentApartment);
     }

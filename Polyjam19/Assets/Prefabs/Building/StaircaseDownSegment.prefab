@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 535486955148163724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 2.5, z: 1}
   m_Children:
   - {fileID: 7167142464771790849}
   m_Father: {fileID: 89089327960185886}
@@ -97,6 +97,7 @@ MonoBehaviour:
   rightBorder: 100
   insideScale: 1
   floorTransform: {fileID: 7167142464771790849}
+  disasterSpawners: []
 --- !u!1 &2221676147544052572
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bc63febc47abf44aa2fba40ef75a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flatRenderer: {fileID: 3872952376509672176}
+  roomRenderer: {fileID: 3872952376509672176}
   corridorRenderer: {fileID: 8068003862009326572}
   segmentType: 3
   isTaken: 0
@@ -257,6 +258,14 @@ PrefabInstance:
     - target: {fileID: 190441187, guid: 98728adc934eafc4990d095ff06d0448, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 190441187, guid: 98728adc934eafc4990d095ff06d0448, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 190441187, guid: 98728adc934eafc4990d095ff06d0448, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1692112792, guid: 98728adc934eafc4990d095ff06d0448, type: 3}
       propertyPath: m_LocalPosition.y

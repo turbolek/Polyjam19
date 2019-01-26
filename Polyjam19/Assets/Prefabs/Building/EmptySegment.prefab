@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2697522162500542061}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 2.5, z: 1}
   m_Children:
   - {fileID: 5663685080605601199}
   m_Father: {fileID: 7342376795492643602}
@@ -97,6 +97,7 @@ MonoBehaviour:
   rightBorder: 1.25
   insideScale: 1
   floorTransform: {fileID: 5663685080605601199}
+  disasterSpawners: []
 --- !u!1 &2878290547737161248
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d684773e991d9d742807fe8a0e3b0161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flatRenderer: {fileID: 4509414141528999312}
+  roomRenderer: {fileID: 4509414141528999312}
   corridorRenderer: {fileID: 5772285155999207260}
 --- !u!1 &4389873723137560016
 GameObject:
@@ -200,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 7421906685066110816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 4.43, z: 1}
   m_Children:
   - {fileID: 3271858458232624357}
   m_Father: {fileID: 7342376795492643602}

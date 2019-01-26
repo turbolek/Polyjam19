@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingSegment : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer flatRenderer = null;
+    private SpriteRenderer roomRenderer = null;
 
     [SerializeField]
     private SpriteRenderer corridorRenderer = null;
@@ -22,7 +22,7 @@ public class BuildingSegment : MonoBehaviour
     {
         get
         {
-            return flatRenderer.bounds.size.y + corridorRenderer.bounds.size.y;
+            return roomRenderer.bounds.size.y + corridorRenderer.bounds.size.y;
         }
     }
 }

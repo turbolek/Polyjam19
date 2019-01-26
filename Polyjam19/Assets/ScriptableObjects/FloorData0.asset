@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: FloorData0
   m_EditorClassIdentifier: 
   segments: 0100000001000000020000000300000001000000
-  apartmentSegment: {fileID: 5714466581761596980, guid: db5aac55a61687e40a019f24feca21a6,
+  apartmentSalonSegment: {fileID: 5714466581761596980, guid: ee5f310d7fdf363439b8baeeafcc7b7b,
     type: 3}
+  apartmentKitchenSegment: {fileID: 5714466581761596980, guid: 66cf61e78ea2ea0418cc7ad2850af670,
+    type: 3}
+  apartmentBathroomSegment: {fileID: 5714466581761596980, guid: f9e014e6a4821a142b83dca3b978042b,
+    type: 3}
+  caretakerRoomSegment: {fileID: 0}
   stairsUpSegment: {fileID: 5205551437894324062, guid: e2360ad1ba2377e48a95caa90fb57d61,
     type: 3}
   stairsDownSegment: {fileID: 7787748769429416614, guid: 3e8802bc6f8f9d540ba5aeee96f0311f,

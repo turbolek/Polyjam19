@@ -79,10 +79,11 @@ public class BuildingGenerator : MonoBehaviour
             }
 
             BuildingSegment segment = Instantiate(floor.GetSegmentPrefab(segmentType), buildingParent);
-            segment.transform.localPosition = new Vector3(floorWidth + segment.SegmentWidth / 2, ((float)level + .5f) * segment.SegmentHeight);
-            segment.SetApartmentRoomBounds(segment.transform.position.x - segment.SegmentWidth / 2, segment.transform.position.x + segment.SegmentWidth / 2);
+            segment.transform.localPosition = new Vector3(floorWidth + segment.GetRoomWidth() / 2, ((float)level + .5f) * segment.GetSegmentHeight());
+            segment.SetApartmentRoomBounds(segment.transform.position.x + segment.GetHallWidth() / 2 - segment.GetSegmentWidth() / 2, segment.transform.position.x + segment.GetHallWidth() / 2 + segment.GetSegmentWidth() / 2);
+
             newFloor.Add(segment);
-            floorWidth += segment.SegmentWidth;
+            floorWidth += segment.GetSegmentWidth();
         }
 
         for (int i = 0; i < newFloor.Count; ++i)

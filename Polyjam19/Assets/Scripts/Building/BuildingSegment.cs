@@ -9,28 +9,15 @@ public class BuildingSegment : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer corridorRenderer = null;
-
+    [SerializeField]
+    private SpriteRenderer hallCorridorRenderer = null;
 
     [SerializeField]
     private Apartment apartmentRoom = null;
     public Apartment apartmentCorridor = null;
 
-    public float SegmentWidth
-    {
-        get
-        {
-            return corridorRenderer.bounds.size.x;
-        }
-    }
-
-    public float SegmentHeight
-    {
-        get
-        {
-            return roomRenderer.bounds.size.y + corridorRenderer.bounds.size.y;
-        }
-    }
-
+    public float SegmentWidth;
+    
     public void SetApartmentRoomBounds(float min, float max)
     {
         if (apartmentRoom ==null)
@@ -45,5 +32,33 @@ public class BuildingSegment : MonoBehaviour
     {
         apartmentCorridor.leftBorder = min;
         apartmentCorridor.rightBorder = max;
+    }
+
+    public float GetSegmentWidth()
+    {
+        return GetRoomWidth() + GetHallWidth();
+    }
+
+    public float GetRoomWidth()
+    {
+        if (roomRenderer == null)
+        {
+            return 0;
+        }
+        return roomRenderer.bounds.size.x;
+    }
+
+    public float GetHallWidth()
+    {
+        if (hallCorridorRenderer == null)
+        {
+            return 0;
+        }
+        return hallCorridorRenderer.bounds.size.x;
+    }
+
+    public float GetSegmentHeight()
+    {
+        return roomRenderer.bounds.size.y + corridorRenderer.bounds.size.y;
     }
 }

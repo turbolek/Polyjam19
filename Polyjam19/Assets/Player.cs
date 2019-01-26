@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     public float leftBorder;
     public float rightBorder;
-    Door activeDoor;
+    BaseDoor activeDoor;
 
     public float speed = 2f;
 
@@ -29,11 +30,14 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             if (activeDoor != null)
-                EnterApartment(activeDoor.apartment);
+                activeDoor.Enter(this);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            ExitApartment();
+            if (activeDoor != null)
+            {
+                activeDoor.Exit(this);
+            }
         }
 
         Move(distance * directionValue);
@@ -49,7 +53,7 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         Debug.Log("trigger entered");
-        Door door = collider.GetComponent<Door>();
+        BaseDoor door = collider.GetComponent<BaseDoor>();
         if (door != null)
             activeDoor = door;
     }
@@ -57,22 +61,10 @@ public class Player : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
         Debug.Log("trigger exit");
-        Door door = collider.GetComponent<Door>();
+        BaseDoor door = collider.GetComponent<BaseDoor>();
         if (door != null)
             activeDoor = null;
     }
-
-    void EnterApartment(Apartment apartment)
-    {
-        transform.localScale = new Vector3(0.75f, 0.75f, 1f);
-        leftBorder = apartment.leftBorder;
-        rightBorder = apartment.rightBorder;
-    }
-
-    void ExitApartment()
-    {
-        transform.localScale = new Vector3(1f, 1f, 1f);
-        leftBorder = -1.5f;
-        rightBorder = 4.5f;
-    }
 }
+
+    

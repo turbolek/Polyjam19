@@ -14,6 +14,8 @@ public class Apartment : MonoBehaviour
     Disaster disaster;
     float disasterLevel = 0f;
 
+    [SerializeField]
+
     void Start()
     {
         if (fireSpawner != null)

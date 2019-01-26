@@ -201,6 +201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomRenderer: {fileID: 3872952376509672176}
   corridorRenderer: {fileID: 8068003862009326572}
+  apartmentRoom: {fileID: 0}
+  apartmentCorridor: {fileID: 6045076035920905269}
   segmentType: 3
   isTaken: 0
   door: {fileID: 3872952376987966345}

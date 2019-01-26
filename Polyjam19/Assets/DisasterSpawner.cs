@@ -18,6 +18,8 @@ public class DisasterSpawner : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Coroutine signalingCoroutine;
 
+
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -47,13 +49,13 @@ public class DisasterSpawner : MonoBehaviour
         apartment = ap;
     }
 
-    void SpawnDisaster()
+    public void SpawnDisaster()
     {
         GameObject disasterGO = Instantiate(disasterPrefab);
         disaster = disasterGO.GetComponent<Disaster>();
-        disasterGO.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f);
-        disaster.apartment = apartment;
+        disasterGO.transform.position = new Vector3(apartment.floorTransform.position.x, apartment.floorTransform.position.y, apartment.floorTransform.position.z + 0.1f);
         disaster.SetSpawner(this);
+        apartment.SetDisaster(disaster);
     }
 
     IEnumerator SignalDisaster()

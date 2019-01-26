@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public Type type;
+    public Disaster.Type counteredDisasterType;
     [HideInInspector]
     public Apartment currentApartment;
     [HideInInspector]
@@ -14,13 +14,5 @@ public class Item : MonoBehaviour
     {
         insideScaler = GetComponent<InsideScaler>();
     }
-
-    public enum Type
-    {
-        FireDistinguisher = 1,
-        Wrench = 2,
-        RatTrap = 3
-    }
-
-
+    
 }

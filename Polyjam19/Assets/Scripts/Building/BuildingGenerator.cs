@@ -23,7 +23,7 @@ public class BuildingGenerator : MonoBehaviour
 
     private void GenerateBuilding()
     {
-        if(building == null)
+        if (building == null)
         {
             building = new List<List<BuildingSegment>>();
         }
@@ -36,7 +36,7 @@ public class BuildingGenerator : MonoBehaviour
         BindStairs();
     }
 
-    private List<BuildingSegment> GenerateFloor (int level)
+    private List<BuildingSegment> GenerateFloor(int level)
     {
         List<BuildingSegment> newFloor = new List<BuildingSegment>();
         float floorWidth = 0;
@@ -72,7 +72,7 @@ public class BuildingGenerator : MonoBehaviour
                     StairsBuildingSegment segment = (StairsBuildingSegment)building[i][j];
                     if (segment.SegmentType == FloorSegmentType.stairsUp)
                     {
-                        segment.SetRelatedStairs(FindFreeStairsDown(i+1));
+                        segment.SetRelatedStairs(FindFreeStairsDown(i + 1));
                     }
                     if (segment.SegmentType == FloorSegmentType.stairsDown)
                     {
@@ -115,6 +115,45 @@ public class BuildingGenerator : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public Apartment GetUpperNeighbour(Apartment apartment)
+    {
+        BuildingSegment segment = apartment.GetComponentInParent<BuildingSegment>();
+        int floorIndex = GetFloorIndex(segment);
+        if (floorIndex < 0)
+            return null;
+        int apartmentIndex = GetApartmentIndexInFloor(floorIndex, segment);
+        if (apartmentIndex < 0)
+            return null;
+
+        if (building.Count <= floorIndex + 1)
+            return null;
+
+        BuildingSegment upperNeighbourSegment = building[floorIndex + 1][apartmentIndex];
+        return upperNeighbourSegment.GetComponentInChildren<Apartment>();
+    }
+
+    int GetFloorIndex(BuildingSegment segment)
+    {
+        for (int i = 0; i < building.Count; i++)
+        {
+            List<BuildingSegment> floor = building[i];
+            if (floor.Contains(segment))
+                return i;
+        }
+        return -1;
+    }
+
+    int GetApartmentIndexInFloor(int floorIndex, BuildingSegment segment)
+    {
+        List<BuildingSegment> floor = building[floorIndex];
+        for (int i = 0; i < floor.Count; i++)
+        {
+            if (floor[i] == segment)
+                return i;
+        }
+        return -1;
     }
 }
 

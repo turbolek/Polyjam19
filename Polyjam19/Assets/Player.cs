@@ -6,7 +6,10 @@ public class Player : MonoBehaviour
 {
     public float leftBorder;
     public float rightBorder;
+    public GameObject itemSlot;
+    public Item currentItem;
     Door activeDoor;
+    Item activeItem;
 
     public float speed = 2f;
 
@@ -30,10 +33,13 @@ public class Player : MonoBehaviour
         {
             if (activeDoor != null)
                 EnterApartment(activeDoor.apartment);
+            else if (activeItem != null)
+                PickUpItem(activeItem);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            ExitApartment();
+            if (activeDoor != null)
+                ExitApartment();
         }
 
         Move(distance * directionValue);
@@ -48,18 +54,24 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("trigger entered");
         Door door = collider.GetComponent<Door>();
         if (door != null)
             activeDoor = door;
+
+        Item item = collider.GetComponent<Item>();
+        if (item != null)
+            activeItem = item;
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("trigger exit");
         Door door = collider.GetComponent<Door>();
         if (door != null)
             activeDoor = null;
+
+        Item item = collider.GetComponent<Item>();
+        if (door != null)
+            activeItem = null;
     }
 
     void EnterApartment(Apartment apartment)
@@ -73,6 +85,13 @@ public class Player : MonoBehaviour
     {
         transform.localScale = new Vector3(1f, 1f, 1f);
         leftBorder = -1.5f;
-        rightBorder = 4.5f;
+        rightBorder = 7.5f;
+    }
+
+    void PickUpItem(Item item)
+    {
+        currentItem = item;
+        item.transform.parent = itemSlot.transform;
+        item.transform.position = itemSlot.transform.position;
     }
 }

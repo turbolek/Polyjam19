@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Apartment currentApartment;
 
+    List<DisasterSpawner> activeDisasterSpawners = new List<DisasterSpawner>();
     Disaster activeDisaster;
     List<Item> activeItems = new List<Item>();
 
@@ -45,13 +47,32 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             if (activeDisaster != null && activeDisaster.apartment == currentApartment)
+            {
                 activeDisaster.Interact(currentItem);
-            else if (activeDoor != null)
+                return;
+            }
+
+            if (activeDisasterSpawners.Count > 0)
+            {
+                DisasterSpawner spawner = activeDisasterSpawners.Find(ds => ds.signaling && ds.apartment == currentApartment);
+                if (spawner != null)
+                {
+                    spawner.Reset();
+                    return;
+                }
+            }
+
+            if (activeDoor != null)
             {
                 activeDoor.Enter(this);
+                return;
             }
-            else if (activeItems.Count > 0 && currentItem == null)
+
+            if (activeItems.Count > 0 && currentItem == null)
+            {
                 PickUpItem(activeItems[0]);
+                return;
+            }
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -89,6 +110,10 @@ public class Player : MonoBehaviour
         Disaster disaster = collider.GetComponent<Disaster>();
         if (disaster != null)
             activeDisaster = disaster;
+
+        DisasterSpawner disasterSpawner = collider.GetComponent<DisasterSpawner>();
+        if (disasterSpawner != null && !activeDisasterSpawners.Contains(disasterSpawner))
+            activeDisasterSpawners.Add(disasterSpawner);
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -106,6 +131,12 @@ public class Player : MonoBehaviour
         Disaster disaster = collider.GetComponent<Disaster>();
         if (disaster != null)
             activeDisaster = null;
+
+        DisasterSpawner disasterSpawner = collider.GetComponent<DisasterSpawner>();
+        if (activeDisasterSpawners.Contains(disasterSpawner))
+        {
+            activeDisasterSpawners.Remove(disasterSpawner);
+        }
     }
 
     void EnterApartment(Apartment apartment)

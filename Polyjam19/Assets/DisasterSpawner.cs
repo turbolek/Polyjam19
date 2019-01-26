@@ -6,14 +6,17 @@ public class DisasterSpawner : MonoBehaviour
 {
     public GameObject disasterPrefab;
     Disaster disaster;
-    Apartment apartment;
+    [HideInInspector]
+    public Apartment apartment;
     public float disasterChancePerSecond = 0.05f;
     float timer = 0f;
     public float signalingTime = 3f;
-    bool signaling = false;
+    [HideInInspector]
+    public bool signaling = false;
     public Sprite signalingSprite;
     Sprite idleSprite;
     SpriteRenderer spriteRenderer;
+    Coroutine signalingCoroutine;
 
     void Start()
     {
@@ -32,7 +35,7 @@ public class DisasterSpawner : MonoBehaviour
             float diceRoll = Random.value;
             if (diceRoll < disasterChancePerSecond)
             {
-                StartCoroutine(SignalDisaster());
+                signalingCoroutine = StartCoroutine(SignalDisaster());
             }
         }
         else
@@ -68,7 +71,11 @@ public class DisasterSpawner : MonoBehaviour
 
     public void Reset()
     {
+        if (signalingCoroutine != null)
+            StopCoroutine(signalingCoroutine);
         timer = 0f;
         spriteRenderer.sprite = idleSprite;
+        signaling = false;
+
     }
 }

@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 1394180369}
   - component: {fileID: 1394180370}
   - component: {fileID: 5778816245801205923}
+  - component: {fileID: 5650206783118414175}
   m_Layer: 0
   m_Name: FireSpawner
   m_TagString: Untagged
@@ -198,8 +199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disasterPrefab: {fileID: 8662073039486370048, guid: 8269c335714123e4798a2fd4e2cb3551,
     type: 3}
+  apartment: {fileID: 0}
   disasterChancePerSecond: 0.1
   signalingTime: 5
+  signaling: 0
   signalingSprite: {fileID: 21300000, guid: da8548bdab0a1c246a03386aac65633b, type: 3}
 --- !u!212 &5778816245801205923
 SpriteRenderer:
@@ -249,6 +252,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &5650206783118414175
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394180368}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.4}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 0.8, y: 0.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &7968047139345444901
 GameObject:
   m_ObjectHideFlags: 0

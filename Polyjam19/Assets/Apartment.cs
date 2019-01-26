@@ -8,6 +8,15 @@ public class Apartment : MonoBehaviour
     public float rightBorder;
     public float insideScale = .75f;
     public Transform floorTransform;
+    public DisasterSpawner[] disasterSpawners;
+
+    void Start()
+    {
+        for (int i =0; i < disasterSpawners.Length; i++)
+        {
+            disasterSpawners[i].SetApartment(this);
+        }
+    }
 
     public void Enter(Player player)
     {

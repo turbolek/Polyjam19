@@ -24,6 +24,6 @@ public class Apartment : MonoBehaviour
         player.insideScaler.ScaleToApartment(this);
         player.leftBorder = leftBorder;
         player.rightBorder = rightBorder;
-        player.transform.position = new Vector3(transform.position.x, floorTransform.position.y, transform.position.z);
+        player.transform.position = new Vector3(transform.position.x, floorTransform.position.y, floorTransform.position.z);
     }
 }

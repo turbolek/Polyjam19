@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public Apartment currentApartment;
 
     List<DisasterSpawner> activeDisasterSpawners = new List<DisasterSpawner>();
-    Disaster activeDisaster;
+    List<Disaster> activeDisasters = new List<Disaster>();
     List<Item> activeItems = new List<Item>();
 
     [HideInInspector]
@@ -33,10 +33,15 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (activeDisaster != null && activeDisaster.apartment == currentApartment)
+            if (activeDisasters.Count > 0)
             {
-                activeDisaster.Interact(currentItem);
-                return;
+                Disaster disaster = activeDisasters.Find(d => d.apartment == currentApartment);
+                if (disaster != null)
+                {
+                    disaster.Interact(currentItem);
+                    return;
+                }
+
             }
 
             if (activeDisasterSpawners.Count > 0)
@@ -111,8 +116,8 @@ public class Player : MonoBehaviour
             activeItems.Add(item);
 
         Disaster disaster = collider.GetComponent<Disaster>();
-        if (disaster != null)
-            activeDisaster = disaster;
+        if (disaster != null && !activeDisasters.Contains(disaster))
+            activeDisasters.Add(disaster);
 
         DisasterSpawner disasterSpawner = collider.GetComponent<DisasterSpawner>();
         if (disasterSpawner != null && !activeDisasterSpawners.Contains(disasterSpawner))
@@ -132,8 +137,8 @@ public class Player : MonoBehaviour
         }
 
         Disaster disaster = collider.GetComponent<Disaster>();
-        if (disaster != null)
-            activeDisaster = null;
+        if (disaster != null && activeDisasters.Contains(disaster))
+            activeDisasters.Remove(disaster);
 
         DisasterSpawner disasterSpawner = collider.GetComponent<DisasterSpawner>();
         if (activeDisasterSpawners.Contains(disasterSpawner))

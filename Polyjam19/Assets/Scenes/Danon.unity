@@ -1108,6 +1108,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3113910790967849825, guid: 53a95e070f8851b4083583154609a45d,
+        type: 3}
+      propertyPath: leftBorder
+      value: -4.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113910790967849825, guid: 53a95e070f8851b4083583154609a45d,
+        type: 3}
+      propertyPath: rightBorder
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 120004831, guid: 53a95e070f8851b4083583154609a45d, type: 3}
       propertyPath: corridor
       value: 

@@ -11,6 +11,7 @@ public class Disaster : MonoBehaviour
     DisasterSpawner spawner;
     public float level = 0f;
     float timer = 0f;
+    public float damagePerSecond = 0.1f;
 
     public enum Type
     {
@@ -45,5 +46,6 @@ public class Disaster : MonoBehaviour
         level = Mathf.Clamp(growRate * timer, 0f, 1f);
         timer += Time.deltaTime;
         transform.localScale = Vector3.one + new Vector3(level, level, 0f);
+        GameManager.healthPoints -= Time.deltaTime * damagePerSecond;
     }
 }

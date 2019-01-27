@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ratSpray_controller
+  m_Controller: {fileID: 9100000, guid: cb0fd25498f940842ba4561f18c65f24, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 93c9dd4e4d8097f41b1eb215ede75808, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 68444193070351c43a5c48b3326e102b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c3fdf7ace0571d8468cd04aee1a1b6a4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 68eb2b80610907d4aaeb232ab80b1947, type: 2}

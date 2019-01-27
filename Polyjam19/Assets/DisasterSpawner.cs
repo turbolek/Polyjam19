@@ -34,7 +34,7 @@ public class DisasterSpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (!broken && apartment.HasBrokenSpawner())
+        if (disaster != null || (!broken && apartment.HasBrokenSpawner()))
             return;
 
         if (timer >= 1f)

@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     [HideInInspector]
     public InsideScaler insideScaler;
     Animator animator;
+    public float yOffset = 0f;
 
     void Start()
     {

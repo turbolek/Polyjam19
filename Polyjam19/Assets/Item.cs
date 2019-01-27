@@ -12,7 +12,7 @@ public class Item : MonoBehaviour
     Animator animator;
     public float yOffset = 0f;
     AudioSource audioSource;
-
+    
     void Start()
     {
         insideScaler = GetComponent<InsideScaler>();

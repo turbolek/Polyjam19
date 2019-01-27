@@ -13,17 +13,13 @@ public class DisasterSpawner : MonoBehaviour
     public float signalingTime = 3f;
     [HideInInspector]
     public bool signaling = false;
-    public Sprite signalingSprite;
-    Sprite idleSprite;
+    public GameObject signalObject;
     SpriteRenderer spriteRenderer;
     Coroutine signalingCoroutine;
 
-
-
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        idleSprite = spriteRenderer.sprite;
+        Reset();
     }
 
     void Update()
@@ -68,7 +64,7 @@ public class DisasterSpawner : MonoBehaviour
     IEnumerator SignalDisaster()
     {
         signaling = true;
-        spriteRenderer.sprite = signalingSprite;
+        signalObject.SetActive(true); ;
 
         while (signaling && timer < signalingTime)
         {
@@ -83,7 +79,7 @@ public class DisasterSpawner : MonoBehaviour
         if (signalingCoroutine != null)
             StopCoroutine(signalingCoroutine);
         timer = 0f;
-        spriteRenderer.sprite = idleSprite;
+        signalObject.SetActive(false);
         signaling = false;
 
     }

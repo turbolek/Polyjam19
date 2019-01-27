@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public Item currentItem;
     [HideInInspector]
     public Apartment currentApartment;
+    public bool isBusy = false;
 
     List<DisasterSpawner> activeDisasterSpawners = new List<DisasterSpawner>();
     Disaster activeDisaster;
@@ -31,11 +32,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (isBusy)
+            return;
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (activeDisaster != null && activeDisaster.apartment == currentApartment)
             {
-                activeDisaster.Interact(currentItem);
+                activeDisaster.Interact(this, currentItem);
                 return;
             }
 
@@ -165,5 +169,17 @@ public class Player : MonoBehaviour
         item.transform.position = new Vector3(item.transform.position.x, currentApartment.floorTransform.position.y, currentApartment.floorTransform.position.z);
         item.currentApartment = currentApartment;
         item.insideScaler.ScaleToApartment(currentApartment);
+    }
+
+    public void FightDisaster(Disaster.Type disasterType)
+    {
+        isBusy = true;
+        currentItem.StartUsing();
+    }
+
+    public void Idle()
+    {
+        isBusy = false;
+        currentItem.StopUsing();
     }
 }

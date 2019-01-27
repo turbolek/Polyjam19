@@ -10,16 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d98471b1c260069429d2cd9b2970fc9f, type: 3}
-  m_Name: FloorData0
+  m_Name: BuildingData
   m_EditorClassIdentifier: 
-  segments: 0100000001000000020000000300000001000000
+  floors:
+  - segments: 0100000004000000020000000300000001000000
+  - segments: 0100000001000000020000000300000001000000
+  - segments: 0100000001000000020000000300000001000000
+  - segments: 0100000001000000020000000300000001000000
   apartmentSalonSegment: {fileID: 5714466581761596980, guid: ee5f310d7fdf363439b8baeeafcc7b7b,
     type: 3}
   apartmentKitchenSegment: {fileID: 5714466581761596980, guid: 66cf61e78ea2ea0418cc7ad2850af670,
     type: 3}
   apartmentBathroomSegment: {fileID: 5714466581761596980, guid: f9e014e6a4821a142b83dca3b978042b,
     type: 3}
-  caretakerRoomSegment: {fileID: 0}
+  caretakerRoomSegment: {fileID: 5714466581761596980, guid: b76c9e5fe4c569d41b9f80201cfa8d51,
+    type: 3}
   stairsUpSegment: {fileID: 5205551437894324062, guid: e2360ad1ba2377e48a95caa90fb57d61,
     type: 3}
   stairsDownSegment: {fileID: 7787748769429416614, guid: 3e8802bc6f8f9d540ba5aeee96f0311f,

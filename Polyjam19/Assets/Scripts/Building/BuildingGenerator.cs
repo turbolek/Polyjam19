@@ -45,6 +45,7 @@ public class BuildingGenerator : MonoBehaviour
             Item item = itemGO.GetComponent<Item>();
             itemGO.transform.position = buildingSegment.apartmentRoom.floorTransform.position;
             itemGO.transform.Translate(new Vector3((float)3 * (1 - i), item.yOffset, 0f));
+            item.currentApartment = buildingSegment.GetComponentInChildren<Apartment>();
         }
     }
 

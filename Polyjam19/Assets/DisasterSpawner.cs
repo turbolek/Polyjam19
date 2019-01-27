@@ -59,6 +59,21 @@ public class DisasterSpawner : MonoBehaviour
         disasterGO.transform.position = new Vector3(apartment.floorTransform.position.x, apartment.floorTransform.position.y, apartment.floorTransform.position.z + 0.1f);
         disaster.SetSpawner(this);
         apartment.SetDisaster(disaster);
+
+        switch (disaster.type)
+        {
+            case Disaster.Type.Fire:
+                GameManager.fireCount++;
+                break;
+            case Disaster.Type.Water:
+                GameManager.waterCount++;
+                break;
+            case Disaster.Type.Rat:
+                GameManager.cockroachCount++;
+                break;
+
+
+        }
     }
 
     IEnumerator SignalDisaster()

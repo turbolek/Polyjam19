@@ -29,7 +29,7 @@ MonoBehaviour:
     type: 3}
   stairsDownSegment: {fileID: 7787748769429416614, guid: 3e8802bc6f8f9d540ba5aeee96f0311f,
     type: 3}
-  roofLeft: {fileID: 5714466581761596980, guid: ee5f310d7fdf363439b8baeeafcc7b7b,
+  roofLeft: {fileID: 5714466581761596980, guid: 2f3539b374d6cde42b51c98e6dabcf47,
     type: 3}
   roofRight: {fileID: 5714466581761596980, guid: ee5f310d7fdf363439b8baeeafcc7b7b,
     type: 3}

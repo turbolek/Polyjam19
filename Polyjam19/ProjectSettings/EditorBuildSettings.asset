@@ -7,8 +7,14 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenuScene.unity
-    guid: d76749c9fa42a7740b3b31620c2bc6f6
+    guid: e6854e75f93629d468d6d48fabae65f4
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: b3b2e824e0401e14cab6178d6d0f9827
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 96110eda0970a7b4898fdd9e6124cf86
+  - enabled: 1
+    path: Assets/Scenes/LoseScene.unity
+    guid: 66b4fe9ba07197c418c874e4adf165b0
   m_configObjects: {}

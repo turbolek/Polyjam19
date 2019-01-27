@@ -7,10 +7,11 @@ public class Disaster : MonoBehaviour
     public Type type;
     [HideInInspector]
     public Apartment apartment;
-    public float growRate = 0.05f;
+    float growRate = 0.01f;
+    float killRate = 0.25f;
     DisasterSpawner spawner;
     public float level = 0f;
-    public float damagePerSecond = 0.1f;
+    float damagePerSecond = 1f;
 
     public enum Type
     {
@@ -38,7 +39,7 @@ public class Disaster : MonoBehaviour
     IEnumerator FixingCoroutine(Player player)
     {
 
-        growRate = -5f * growRate;
+        growRate = -killRate;
         player.FightDisaster(type);
         spawner.Reset();
         while (level > 0)
@@ -56,6 +57,6 @@ public class Disaster : MonoBehaviour
     {
         level = Mathf.Clamp(level + growRate * Time.deltaTime, 0f, 1f);
         transform.localScale = Vector3.one + new Vector3(level, level, 0f);
-        GameManager.HealthPoints -= Time.deltaTime * damagePerSecond;
+        GameManager.HealthPoints -= Time.deltaTime * damagePerSecond * level;
     }
 }

@@ -136,7 +136,7 @@ MonoBehaviour:
   isBusy: 0
   stepSound: {fileID: 8300000, guid: ebc747e6884414b4fa48faedae5d3006, type: 3}
   insideScaler: {fileID: 0}
-  speed: 8
+  speed: 10
 --- !u!61 &827194452814919822
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,9 +8,9 @@ public class DisasterSpawner : MonoBehaviour
     Disaster disaster;
     [HideInInspector]
     public Apartment apartment;
-    public float disasterChancePerSecond = 0.05f;
+    float disasterChancePerSecond = 0.01f;
     float timer = 0f;
-    public float signalingTime = 3f;
+    float signalingTime = 30f;
     [HideInInspector]
     public bool signaling = false;
     public GameObject signalObject;

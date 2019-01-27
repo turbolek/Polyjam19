@@ -42,14 +42,6 @@ public class Apartment : MonoBehaviour
         dis.apartment = this;
     }
 
-    void Update()
-    {
-        if (disaster != null && disaster.level >= 1f)
-        {
-            InfectNeighbour();
-        }
-    }
-
     void InfectNeighbour()
     {
         Apartment neighbour = null;

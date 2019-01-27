@@ -56,10 +56,38 @@ public class BuildingData : ScriptableObject
     }
 
     [SerializeField]
-    private BuildingSegment emptysegment = null;
+    private BuildingSegment roofLeft = null;
+    public BuildingSegment RoofLeft
+    {
+        get { return roofLeft; }
+    }
+
+    [SerializeField]
+    private BuildingSegment roofRight = null;
+    public BuildingSegment RoofRight
+    {
+        get { return roofRight; }
+    }
+
+    [SerializeField]
+    private BuildingSegment roofCenterWide = null;
+    public BuildingSegment RoofCenterWide
+    {
+        get { return roofCenterWide; }
+    }
+
+    [SerializeField]
+    private BuildingSegment roofCenterNarrow = null;
+    public BuildingSegment RoofCenterNarrow
+    {
+        get { return roofCenterNarrow; }
+    }
+
+    [SerializeField]
+    private BuildingSegment emptySegment = null;
     public BuildingSegment EmptySegment
     {
-        get { return emptysegment; }
+        get { return emptySegment; }
     }
 
     public BuildingSegment GetSegmentPrefab(FloorSegmentType segmentType)
@@ -76,6 +104,14 @@ public class BuildingData : ScriptableObject
                 return stairsDownSegment;
             case FloorSegmentType.caretakerRoom:
                 return caretakerRoomSegment;
+            case FloorSegmentType.roofLeft:
+                return RoofLeft;
+            case FloorSegmentType.roofRight:
+                return RoofRight;
+            case FloorSegmentType.roofCenterWide:
+                return RoofCenterWide;
+            case FloorSegmentType.roofCenterNarrow:
+                return RoofCenterNarrow;
             default:
                 return null;
         }
@@ -133,6 +169,10 @@ public enum FloorSegmentType
     stairsUp = 2,
     stairsDown = 3,
     caretakerRoom = 4,
+    roofLeft = 5,
+    roofRight = 6,
+    roofCenterWide = 7,
+    roofCenterNarrow = 8,
 }
 
 public enum ApartmentType

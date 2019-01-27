@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2697522162500542061}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 2.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5663685080605601199}
   m_Father: {fileID: 7342376795492643602}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 27c2ef17f93087848be876afd58f345a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa675a9a8117eb24ea1cce1c49b570ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,10 @@ MonoBehaviour:
   rightBorder: 1.25
   insideScale: 1
   floorTransform: {fileID: 5663685080605601199}
-  disasterSpawners: []
+  doorTransform: {fileID: 0}
+  fireSpawner: {fileID: 0}
+  waterSpawner: {fileID: 0}
+  ratSpawner: {fileID: 0}
 --- !u!1 &2878290547737161248
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +151,7 @@ MonoBehaviour:
   hallCorridorRenderer: {fileID: 0}
   apartmentRoom: {fileID: 1383789959470598166}
   apartmentCorridor: {fileID: 1383789959470598166}
+  SegmentWidth: 0
 --- !u!1 &4389873723137560016
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,8 +207,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7421906685066110816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 4.43, z: 1}
+  m_LocalPosition: {x: 0.0050001, y: 3.725, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3271858458232624357}
   m_Father: {fileID: 7342376795492643602}
@@ -247,7 +251,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2ecabddaa6bf2fb46b09f4b4d44d5ad6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c42db9a044ecfa4dbdf06f8ee4eeddb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

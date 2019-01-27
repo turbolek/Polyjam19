@@ -45,6 +45,7 @@ public class Disaster : MonoBehaviour
         while (level > 0)
             yield return new WaitForSeconds(1f);
         player.Idle();
+        gameObject.SetActive(false);
         Destroy(gameObject);
     }
 

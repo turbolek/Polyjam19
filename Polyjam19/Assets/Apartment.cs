@@ -27,6 +27,11 @@ public class Apartment : MonoBehaviour
             ratSpawner.SetApartment(this);
     }
 
+    public bool HasBrokenSpawner()
+    {
+        return fireSpawner.broken || waterSpawner.broken || ratSpawner.broken;
+    }
+
     public void Enter(Player player)
     {
         player.currentApartment = this;

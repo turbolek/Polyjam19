@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     Animator animator;
     AudioSource audioSource;
     public AudioClip stepSound;
+    public AudioSource wrenchAudioSource;
 
     List<DisasterSpawner> activeDisasterSpawners = new List<DisasterSpawner>();
     Disaster activeDisaster;
@@ -50,10 +51,10 @@ public class Player : MonoBehaviour
 
             if (activeDisasterSpawners.Count > 0)
             {
-                DisasterSpawner spawner = activeDisasterSpawners.Find(ds => ds.signaling && ds.apartment == currentApartment);
+                DisasterSpawner spawner = activeDisasterSpawners.Find(ds => ds.broken && ds.apartment == currentApartment);
                 if (spawner != null)
                 {
-                    spawner.Reset();
+                    spawner.Fix(this);
                     return;
                 }
             }
@@ -183,14 +184,26 @@ public class Player : MonoBehaviour
         currentItem.StartUsing();
     }
 
+    public void FixSpawner()
+    {
+        isBusy = true;
+        animator.SetTrigger("work");
+    }
+
     public void Idle()
     {
         isBusy = false;
-        currentItem.StopUsing();
+        if (currentItem != null)
+            currentItem.StopUsing();
     }
 
     public void Step()
     {
         audioSource.PlayOneShot(stepSound);
+    }
+
+    public void wrenchPlayAudio()
+    {
+        wrenchAudioSource.PlayOneShot(wrenchAudioSource.clip);
     }
 }

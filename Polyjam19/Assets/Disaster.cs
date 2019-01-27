@@ -46,6 +46,20 @@ public class Disaster : MonoBehaviour
             yield return new WaitForSeconds(1f);
         player.Idle();
         gameObject.SetActive(false);
+
+        switch (type)
+        {
+            case Disaster.Type.Fire:
+                GameManager.fireCount--;
+                break;
+            case Disaster.Type.Water:
+                GameManager.waterCount--;
+                break;
+            case Disaster.Type.Rat:
+                GameManager.cockroachCount--;
+                break;
+        }
+
         Destroy(gameObject);
     }
 
@@ -56,6 +70,8 @@ public class Disaster : MonoBehaviour
 
     void Update()
     {
+
+
         level = Mathf.Clamp(level + growRate * Time.deltaTime, 0f, 1f);
         transform.localScale = 2 * new Vector3(level, level, 0f);
         GameManager.HealthPoints -= Time.deltaTime * damagePerSecond * level;

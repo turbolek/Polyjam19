@@ -8,6 +8,7 @@ public class Apartment : MonoBehaviour
     public float rightBorder;
     public float insideScale = .75f;
     public Transform floorTransform;
+    public Transform doorTransform;
     public DisasterSpawner fireSpawner;
     public DisasterSpawner waterSpawner;
     public DisasterSpawner ratSpawner;
@@ -32,7 +33,7 @@ public class Apartment : MonoBehaviour
         player.insideScaler.ScaleToApartment(this);
         player.leftBorder = leftBorder;
         player.rightBorder = rightBorder;
-        player.transform.position = new Vector3(transform.position.x, floorTransform.position.y, floorTransform.position.z);
+        player.transform.position = new Vector3(doorTransform.position.x, floorTransform.position.y, floorTransform.position.z);
     }
 
     public void SetDisaster(Disaster dis)

@@ -371,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3123954987131112232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6867604462169314012}
@@ -427,6 +427,7 @@ MonoBehaviour:
   rightBorder: 100
   insideScale: 1
   floorTransform: {fileID: 6019727347031161307}
+  doorTransform: {fileID: 6867604461521204462}
   fireSpawner: {fileID: 0}
   waterSpawner: {fileID: 0}
   ratSpawner: {fileID: 0}
@@ -666,7 +667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6867604461521204461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.3, y: 0.035, z: -0.5}
+  m_LocalPosition: {x: 8.65, y: 0.035, z: 0}
   m_LocalScale: {x: 3.1694462, y: 5.1769853, z: 1}
   m_Children: []
   m_Father: {fileID: 6867604462169314012}
@@ -733,10 +734,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.49, y: 0.675}
+  m_Offset: {x: 0, y: 0.675}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 1, y: 0}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1.33}
     newSize: {x: 1, y: 1.33}
     adaptiveTilingThreshold: 0.5
@@ -811,6 +812,7 @@ MonoBehaviour:
   rightBorder: 100
   insideScale: 0.75
   floorTransform: {fileID: 5670658107040441145}
+  doorTransform: {fileID: 6867604461521204462}
   fireSpawner: {fileID: 0}
   waterSpawner: {fileID: 0}
   ratSpawner: {fileID: 0}

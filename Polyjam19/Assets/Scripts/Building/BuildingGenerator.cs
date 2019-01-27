@@ -33,7 +33,7 @@ public class BuildingGenerator : MonoBehaviour
         player.Init();
         BuildingSegment buildingSegment = building[0][1];
         buildingSegment.apartmentRoom.Enter(player);
-
+        player.transform.position = buildingSegment.apartmentRoom.floorTransform.position;
     }
 
     void SpawnItems()

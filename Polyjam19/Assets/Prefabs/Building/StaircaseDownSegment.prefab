@@ -97,7 +97,10 @@ MonoBehaviour:
   rightBorder: 100
   insideScale: 1
   floorTransform: {fileID: 7167142464771790849}
-  disasterSpawners: []
+  doorTransform: {fileID: 3872952376987966346}
+  fireSpawner: {fileID: 0}
+  waterSpawner: {fileID: 0}
+  ratSpawner: {fileID: 0}
 --- !u!1 &2221676147544052572
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3872952376419720025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -0.2}
+  m_LocalPosition: {x: 0, y: 0.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3872952376509672177}
@@ -266,7 +269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3872952376987966341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3872952376509672177}
@@ -412,6 +415,7 @@ MonoBehaviour:
   hallCorridorRenderer: {fileID: 0}
   apartmentRoom: {fileID: 6045076035920905269}
   apartmentCorridor: {fileID: 6045076035920905269}
+  SegmentWidth: 0
   segmentType: 3
   isTaken: 0
   door: {fileID: 3872952376987966345}

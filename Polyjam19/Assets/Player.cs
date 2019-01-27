@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (activeDisaster != null && activeDisaster.apartment == currentApartment)
+            if (activeDisaster != null && activeDisaster.apartment == currentApartment && currentItem != null)
             {
                 activeDisaster.Interact(this, currentItem);
                 return;
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
                 return;
             }
 
-            if (activeItems.Count > 0 && currentItem == null)
+            if (activeItems.Count > 0 && currentItem == null && activeItems[0].currentApartment == currentApartment)
             {
                 PickUpItem(activeItems[0]);
                 return;

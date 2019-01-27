@@ -59,6 +59,15 @@ public class BuildingSegment : MonoBehaviour
 
     public float GetSegmentHeight()
     {
-        return roomRenderer.bounds.size.y + corridorRenderer.bounds.size.y;
+        float height = 0;
+        if (roomRenderer != null)
+        {
+            height += roomRenderer.bounds.size.y;
+        }
+        if (corridorRenderer != null)
+        {
+            height += corridorRenderer.bounds.size.y;
+        }
+        return height;
     }
 }

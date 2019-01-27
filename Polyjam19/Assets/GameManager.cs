@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -52,6 +53,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        healthPoints = 100;
+        timeLimit = 180;
         startHealth = healthPoints;
 
         if (onHealtchUpdate != null)
@@ -103,8 +106,8 @@ public class GameManager : MonoBehaviour
     void GameOver(bool victory)
     {
         if (victory)
-            Debug.Log("Victory");
+            SceneManager.LoadScene(2);
         else
-            Debug.Log("Game Over");
+            SceneManager.LoadScene(3);
     }
 }

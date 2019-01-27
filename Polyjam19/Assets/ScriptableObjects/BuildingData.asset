@@ -17,6 +17,7 @@ MonoBehaviour:
   - segments: 0100000001000000020000000300000001000000
   - segments: 0100000001000000020000000300000001000000
   - segments: 0100000001000000020000000300000001000000
+  - segments: 0500000007000000080000000800000006000000
   apartmentSalonSegment: {fileID: 5714466581761596980, guid: ee5f310d7fdf363439b8baeeafcc7b7b,
     type: 3}
   apartmentKitchenSegment: {fileID: 5714466581761596980, guid: 66cf61e78ea2ea0418cc7ad2850af670,
@@ -29,5 +30,13 @@ MonoBehaviour:
     type: 3}
   stairsDownSegment: {fileID: 7787748769429416614, guid: 3e8802bc6f8f9d540ba5aeee96f0311f,
     type: 3}
-  emptysegment: {fileID: 1496122384048192055, guid: 71046c15108e4d74c9c0ec84c1c2afc1,
+  roofLeft: {fileID: 5714466581761596980, guid: ee5f310d7fdf363439b8baeeafcc7b7b,
+    type: 3}
+  roofRight: {fileID: 5714466581761596980, guid: ee5f310d7fdf363439b8baeeafcc7b7b,
+    type: 3}
+  roofCenterWide: {fileID: 5714466581761596980, guid: 66cf61e78ea2ea0418cc7ad2850af670,
+    type: 3}
+  roofCenterNarrow: {fileID: 1496122384048192055, guid: 71046c15108e4d74c9c0ec84c1c2afc1,
+    type: 3}
+  emptySegment: {fileID: 1496122384048192055, guid: 71046c15108e4d74c9c0ec84c1c2afc1,
     type: 3}

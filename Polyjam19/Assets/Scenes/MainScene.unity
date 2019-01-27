@@ -179,6 +179,8 @@ MonoBehaviour:
   - {fileID: 3317867957906686322, guid: 045014b6467f9c145891f2d23ea16238, type: 3}
   - {fileID: 4741112231201570943, guid: b4d1d14ea67732842a511f8027814cec, type: 3}
   timeLimit: 180
+  audioSetPrefab: {fileID: 1639815231192163027, guid: dbc805493e512924e966dfab03ac7bc6,
+    type: 3}
   healthLabel: {fileID: 2003211910}
   timeLabel: {fileID: 1581138505}
 --- !u!4 &307518427
@@ -374,7 +376,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 22.72
+  orthographic size: 25
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -398,7 +400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1340883350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: 25, z: -10}
+  m_LocalPosition: {x: 32, y: 25, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

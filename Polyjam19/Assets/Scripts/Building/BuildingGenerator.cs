@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildingGenerator : MonoBehaviour
 {
     [SerializeField]
-    private Floor floor = null;
+    private BuildingData floor = null;
 
     [SerializeField]
     [Range(1, 100)]
@@ -54,7 +54,7 @@ public class BuildingGenerator : MonoBehaviour
             building = new List<List<BuildingSegment>>();
         }
         building.Clear();
-        for (int i = 0; i < floorsNumber; ++i)
+        for (int i = 0; i < floor.Segments.Count; ++i)
         {
             building.Add(GenerateFloor(i));
         }
@@ -66,9 +66,9 @@ public class BuildingGenerator : MonoBehaviour
     {
         List<BuildingSegment> newFloor = new List<BuildingSegment>();
         float floorWidth = 0;
-        for (int i = 0; i < floor.Segments.Count; ++i)
+        for (int i = 0; i < floor.Segments[level].segments.Count; ++i)
         {
-            FloorSegmentType segmentType = floor.Segments[i];
+            FloorSegmentType segmentType = floor.Segments[level].segments[i];
             if (level == 0 && segmentType == FloorSegmentType.stairsDown)
             {
                 segmentType = FloorSegmentType.empty;

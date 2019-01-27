@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FloorData", menuName = "ScriptableObjects/FloorData")]
-public class Floor : ScriptableObject
+[CreateAssetMenu(fileName = "BuildingData", menuName = "ScriptableObjects/BuildingData")]
+public class BuildingData : ScriptableObject
 {
     [SerializeField]
-    private List<FloorSegmentType> segments = null;
-    public List<FloorSegmentType> Segments 
+    private List<FloorData> floors = null;
+
+    public List<FloorData> Segments 
     {
-        get { return segments; }
+        get { return floors; }
     }
 
     [SerializeField]
@@ -114,9 +115,15 @@ public class Floor : ScriptableObject
                 return null;
         }
     }
+
+
 }
 
-
+[System.Serializable]
+public struct FloorData
+{
+    public List<FloorSegmentType> segments;
+}
 
 
 public enum FloorSegmentType

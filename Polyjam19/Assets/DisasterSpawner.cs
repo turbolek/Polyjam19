@@ -8,8 +8,8 @@ public class DisasterSpawner : MonoBehaviour
     Disaster disaster;
     [HideInInspector]
     public Apartment apartment;
-    float breakChancePerSecond = 0.02f;
-    float disasterChancePerSecond = 0.01f;
+    float breakChancePerSecond = 0.015f;
+    float disasterChancePerSecond = 0.005f;
     float timer = 0f;
     [HideInInspector]
     public bool signaling = false;

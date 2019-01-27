@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Apartment currentApartment;
     public bool isBusy = false;
+    Animator animator;
 
     List<DisasterSpawner> activeDisasterSpawners = new List<DisasterSpawner>();
     Disaster activeDisaster;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     public void Init()
     {
         insideScaler = GetComponent<InsideScaler>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -98,6 +100,7 @@ public class Player : MonoBehaviour
 
     void Move(float distance)
     {
+        animator.SetBool("walk", Mathf.Abs(distance) > 0f);
         float newPosition = transform.position.x + distance;
         if (newPosition > leftBorder && newPosition < rightBorder)
             transform.Translate(new Vector3(distance, 0f, 0f));

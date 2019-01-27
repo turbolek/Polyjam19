@@ -41,7 +41,6 @@ public class Disaster : MonoBehaviour
 
         growRate = -killRate;
         player.FightDisaster(type);
-        spawner.Reset();
         while (level > 0)
             yield return new WaitForSeconds(1f);
         player.Idle();

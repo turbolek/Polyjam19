@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 3317867957906686322, guid: 045014b6467f9c145891f2d23ea16238, type: 3}
   - {fileID: 4741112231201570943, guid: 760fee93b07a8b34c8e23b11dab9526b, type: 3}
   timeLimit: 180
-  audioSetPrefab: {fileID: 0}
+  audioSetPrefab: {fileID: 1639815231192163027, guid: dbc805493e512924e966dfab03ac7bc6,
+    type: 3}
   healthLabel: {fileID: 0}
   timeLabel: {fileID: 0}

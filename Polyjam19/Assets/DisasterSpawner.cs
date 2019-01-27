@@ -8,8 +8,8 @@ public class DisasterSpawner : MonoBehaviour
     Disaster disaster;
     [HideInInspector]
     public Apartment apartment;
-    float breakChancePerSecond = 0.015f;
-    float disasterChancePerSecond = 0.005f;
+    float breakChancePerSecond = 0.02f;
+    float disasterChancePerSecond = 0.01f;
     float timer = 0f;
     [HideInInspector]
     public bool signaling = false;
@@ -60,6 +60,7 @@ public class DisasterSpawner : MonoBehaviour
         GameObject disasterGO = Instantiate(disasterPrefab);
         disaster = disasterGO.GetComponent<Disaster>();
         disasterGO.transform.position = new Vector3(apartment.floorTransform.position.x, apartment.floorTransform.position.y, apartment.floorTransform.position.z + 0.1f);
+        disasterGO.transform.localScale = Vector3.zero;
         disaster.SetSpawner(this);
         apartment.SetDisaster(disaster);
 

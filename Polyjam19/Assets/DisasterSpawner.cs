@@ -8,48 +8,51 @@ public class DisasterSpawner : MonoBehaviour
     Disaster disaster;
     [HideInInspector]
     public Apartment apartment;
-    float disasterChancePerSecond = 0.01f;
+    float breakChancePerSecond = 0.015f;
+    float disasterChancePerSecond = 0.005f;
     float timer = 0f;
-    float signalingTime = 30f;
     [HideInInspector]
     public bool signaling = false;
     public GameObject signalObject;
     SpriteRenderer spriteRenderer;
     Coroutine signalingCoroutine;
+    [HideInInspector]
+    public bool broken = false;
 
     void Start()
     {
         Reset();
     }
 
+    public void Fix(Player player)
+    {
+        broken = false;
+        signalObject.SetActive(false);
+        player.FixSpawner();
+    }
+
     void Update()
     {
-        if (!signaling && (apartment.waterSpawner.signaling || apartment.ratSpawner.signaling || apartment.fireSpawner.signaling))
-        {
-            Reset();
-            return;
-        }
-
-        if (disaster != null || signaling)
+        timer += Time.deltaTime;
+        if (!broken && apartment.HasBrokenSpawner())
             return;
 
-
-        if (timer > 1f)
+        if (timer >= 1f)
         {
             timer = 0f;
-            float diceRoll = Random.value;
-            if (diceRoll < disasterChancePerSecond)
-            {
-                signalingCoroutine = StartCoroutine(SignalDisaster());
-            }
+            RollDice();
         }
-        else
-            timer += Time.deltaTime;
     }
 
     public void SetApartment(Apartment ap)
     {
         apartment = ap;
+    }
+
+    void Break()
+    {
+        broken = true;
+        signalObject.SetActive(true);
     }
 
     public void SpawnDisaster()
@@ -76,17 +79,15 @@ public class DisasterSpawner : MonoBehaviour
         }
     }
 
-    IEnumerator SignalDisaster()
+    void RollDice()
     {
-        signaling = true;
-        signalObject.SetActive(true); ;
-
-        while (signaling && timer < signalingTime)
+        float diceRoll = Random.value;
+        if (broken && diceRoll < disasterChancePerSecond)
         {
-            timer += Time.deltaTime;
-            yield return null;
+            SpawnDisaster();
         }
-        SpawnDisaster();
+        if (!broken && diceRoll < breakChancePerSecond)
+            Break();
     }
 
     public void Reset()

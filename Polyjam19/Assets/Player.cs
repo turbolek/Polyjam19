@@ -50,10 +50,10 @@ public class Player : MonoBehaviour
 
             if (activeDisasterSpawners.Count > 0)
             {
-                DisasterSpawner spawner = activeDisasterSpawners.Find(ds => ds.signaling && ds.apartment == currentApartment);
+                DisasterSpawner spawner = activeDisasterSpawners.Find(ds => ds.broken && ds.apartment == currentApartment);
                 if (spawner != null)
                 {
-                    spawner.Reset();
+                    spawner.Fix(this);
                     return;
                 }
             }
@@ -181,6 +181,11 @@ public class Player : MonoBehaviour
     {
         isBusy = true;
         currentItem.StartUsing();
+    }
+
+    public void FixSpawner()
+    {
+
     }
 
     public void Idle()

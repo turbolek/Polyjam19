@@ -56,6 +56,6 @@ public class Disaster : MonoBehaviour
     {
         level = Mathf.Clamp(level + growRate * Time.deltaTime, 0f, 1f);
         transform.localScale = Vector3.one + new Vector3(level, level, 0f);
-        GameManager.healthPoints -= Time.deltaTime * damagePerSecond;
+        GameManager.HealthPoints -= Time.deltaTime * damagePerSecond;
     }
 }

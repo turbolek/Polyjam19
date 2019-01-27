@@ -7,7 +7,7 @@ public class Disaster : MonoBehaviour
     public Type type;
     [HideInInspector]
     public Apartment apartment;
-    float growRate = 0.01f;
+    float growRate = 0.05f;
     float killRate = 0.25f;
     DisasterSpawner spawner;
     public float level = 0f;
@@ -56,7 +56,7 @@ public class Disaster : MonoBehaviour
     void Update()
     {
         level = Mathf.Clamp(level + growRate * Time.deltaTime, 0f, 1f);
-        transform.localScale = Vector3.one + new Vector3(level, level, 0f);
+        transform.localScale = 2 * new Vector3(level, level, 0f);
         GameManager.HealthPoints -= Time.deltaTime * damagePerSecond * level;
     }
 }

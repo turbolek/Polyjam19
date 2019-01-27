@@ -31,8 +31,8 @@ public class BuildingGenerator : MonoBehaviour
         GameObject playerGO = Instantiate(gameManager.playerPrefab);
         Player player = playerGO.GetComponent<Player>();
         player.Init();
-        BuildingSegment buildingSegment = building[0][0];
-        buildingSegment.apartmentCorridor.Enter(player);
+        BuildingSegment buildingSegment = building[0][1];
+        buildingSegment.apartmentRoom.Enter(player);
 
     }
 
@@ -41,9 +41,9 @@ public class BuildingGenerator : MonoBehaviour
         for (int i = 0; i < gameManager.itemPrefabs.Length; i++)
         {
             GameObject itemGO = Instantiate(gameManager.itemPrefabs[i]);
-            BuildingSegment buildingSegment = building[0][0];
-            itemGO.transform.position = buildingSegment.apartmentCorridor.floorTransform.position;
-            itemGO.transform.Translate(new Vector3((float)2* i, 0f, 0f));
+            BuildingSegment buildingSegment = building[0][1];
+            itemGO.transform.position = buildingSegment.apartmentRoom.floorTransform.position;
+            itemGO.transform.Translate(new Vector3((float)2* (1-i), 0f, 0f));
         }
     }
 

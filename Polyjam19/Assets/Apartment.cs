@@ -24,7 +24,6 @@ public class Apartment : MonoBehaviour
             waterSpawner.SetApartment(this);
         if (fireSpawner != null)
             ratSpawner.SetApartment(this);
-
     }
 
     public void Enter(Player player)

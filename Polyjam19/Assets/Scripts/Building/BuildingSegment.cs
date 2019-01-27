@@ -12,8 +12,8 @@ public class BuildingSegment : MonoBehaviour
     [SerializeField]
     private SpriteRenderer hallCorridorRenderer = null;
 
-    [SerializeField]
-    private Apartment apartmentRoom = null;
+    
+    public Apartment apartmentRoom = null;
     public Apartment apartmentCorridor = null;
 
     public float SegmentWidth;
